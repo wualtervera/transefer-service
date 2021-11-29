@@ -15,27 +15,27 @@ public class TransferController {
     @Autowired
     private TransferOperations transferOperations;
 
-    @GetMapping("list")
+    @GetMapping("")
     public Flux<Transfer> getAll(){
         return transferOperations.findAll();
     }
 
-    @GetMapping("list/{id}")
+    @GetMapping("/{id}")
     public Mono<Transfer> getOne(@PathVariable String id){
         return transferOperations.findById(id);
     }
 
-    @PostMapping("add")
+    @PostMapping("")
     public Mono<Transfer> save(@RequestBody Transfer profile){
         return transferOperations.save(profile);
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/{id}")
     public Mono<Transfer> update(@PathVariable String id, @RequestBody Transfer profile){
         return transferOperations.update(id, profile);
     }
 
-    @DeleteMapping("remove/{id}")
+    @DeleteMapping("/{id}")
     public Mono<Void> remove(@PathVariable String id){
         return transferOperations.delete(id);
     }

@@ -43,7 +43,7 @@ public class TransferCrudService implements TransferRepository {
     @Override
     public Mono<Void> delete(String id) {
         return transferCrudRepository.findById(id)
-                .switchIfEmpty(Mono.error(new IllegalArgumentException("Error: No existe la transferencia a eliminar.")))
+                .switchIfEmpty(Mono.error(new IllegalArgumentException("Error: No existe la transferencia a eliminar.").fillInStackTrace()))
                 .flatMap(transferDao -> {
                     transferDao.setId(id);
                     return transferCrudRepository.deleteById(transferDao.getId());
