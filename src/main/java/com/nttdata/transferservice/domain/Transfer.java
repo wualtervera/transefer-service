@@ -17,5 +17,4 @@ public class Transfer {
     private String idAccountDestiny;    //Cuenta destino
     private double amount;  //montor de la trnsferencia
     private LocalDate date;
-    String idAccount;  //cuenta de tranferencia
 }

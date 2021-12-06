@@ -1,14 +1,15 @@
-package com.nttdata.account.domain;
+package com.nttdata.transferservice.infrastructura.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account {
+public class AccountDto {
 
     private String id;
     private String numberAccount; //Numero de cuenta

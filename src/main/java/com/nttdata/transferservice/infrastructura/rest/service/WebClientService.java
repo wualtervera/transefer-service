@@ -1,8 +1,6 @@
-package com.nttdata.account.infrestructure.rest.service;
+package com.nttdata.transferservice.infrastructura.rest.service;
 
-import com.nttdata.account.infrestructure.model.dto.CreditDto;
-import com.nttdata.account.infrestructure.model.dto.CustomerDTO;
-import com.nttdata.account.infrestructure.model.dto.ProfileDto;
+import com.nttdata.transferservice.infrastructura.model.dto.AccountDto;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -11,34 +9,23 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class WebClientService {
-    WebClient webClient = WebClient.create("http://localhost:8080/api/v1");
-
-
-    //obtiene el perfil del cliente
-    public Mono<ProfileDto> getProfile(String idProfile) {
-        return webClient.get()
-                .uri("/profile/{idProfile}", idProfile)
+    final WebClient webClient = WebClient.create("http://localhost:8080/api/v1");
+    //Actualiza balance de la cuenta
+    public Mono<AccountDto> updateAccount(String idAccount, AccountDto accountDto) {
+        return webClient.put()
+                .uri("/account/{idAccount}", idAccount)
                 .accept(MediaType.APPLICATION_JSON)
+                .body(Mono.just(accountDto), AccountDto.class)
                 .retrieve()
-                .bodyToMono(ProfileDto.class);
-    }
-    //obtiene el cliente
-    public Mono<CustomerDTO> getCustommer(String idCustomer) {
-        return webClient.get()
-                .uri("/customers/{idCustomer}", idCustomer)
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(CustomerDTO.class);
+                .bodyToMono(AccountDto.class);
     }
 
-    //obtiene el cliente
-    public Flux<CreditDto> getCredit(String idCustomer) {
+    public Mono<AccountDto> getAccount(String idAccoun) {
         return webClient.get()
-                .uri("/credit/customer/{idCustomer}", idCustomer)
+                .uri("/account/{idAccoun}", idAccoun)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToFlux(CreditDto.class);
+                .bodyToMono(AccountDto.class);
     }
-
 
 }

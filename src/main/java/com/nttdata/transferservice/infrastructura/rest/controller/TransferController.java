@@ -26,13 +26,13 @@ public class TransferController {
     }
 
     @PostMapping("")
-    public Mono<Transfer> save(@RequestBody Transfer profile){
-        return transferOperations.save(profile);
+    public Mono<Transfer> save(@RequestBody Transfer transfer){
+        return transferOperations.save(transfer);
     }
 
     @PutMapping("/{id}")
-    public Mono<Transfer> update(@PathVariable String id, @RequestBody Transfer profile){
-        return transferOperations.update(id, profile);
+    public Mono<Transfer> update(@PathVariable String id, @RequestBody Transfer transfer){
+        return transferOperations.update(id, transfer);
     }
 
     @DeleteMapping("/{id}")
