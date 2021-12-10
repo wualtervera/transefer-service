@@ -9,7 +9,7 @@ spring:
   data:
     mongodb:
       database: bootcamp
-      uri: mongodb://bootcampmongodb:NoaWZiyLwiCNVwrhhKTBY5cN9QZ5L5tuupnA1mByoZsbGYCdC5fuZ5EIf0ynoM2T08hEaQ3SRwA0nJaBQSAEkA==@bootcampmongodb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@bootcampmongodb@
+      uri: mongodb://localhost:27017
 
 
 #server.port = 8006
